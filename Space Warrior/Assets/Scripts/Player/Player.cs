@@ -7,12 +7,22 @@ public class Player : MonoBehaviour
     Rigidbody2D rb;
     private PlayerController controls;
 
+    public PlayerHealth health;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         controls = new PlayerController();
 
         Movement();
+    }
+
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            health.TakeDamage(10);
+        }
     }
 
     void Movement()
